@@ -2,12 +2,13 @@
 Keep track of your certificates.
 
 ## .env
+```
 MAILGUN_SENDER="domain.tld"
 MAILGUN_TOKEN="key-xxx"
 MAILGUN_FROM="Checkcrt<noreply@domain.tld>"
 MAILGUN_TO="you@domain.tld,cto@domain.tld"
 SITES="www.subbrand.tld,/www/api.brand.tld"
-
+```
 
 ## Understand the sites syntax
 
