@@ -18,24 +18,23 @@ def key_cmp_f(a,b):
   return (a - b)
 
 def send_mail(subject,text,html):
-	senderdomain = os.getenv("MAILGUN_SENDER")
-	token = os.getenv("MAILGUN_TOKEN")
+	senderdomain = os.getenv("CHECKCRT_MAILGUN_SENDER")
+	token = os.getenv("CHECKCRT_MAILGUN_TOKEN")
 
 	return requests.post(
 		"https://api.mailgun.net/v3/"+senderdomain+"/messages",
 		auth=("api", token),
 		data={
-			"from": os.getenv("MAILGUN_FROM"),
-			"to": os.getenv("MAILGUN_TO").split(","),
+			"from": os.getenv("CHECKCRT_MAILGUN_FROM"),
+			"to": os.getenv("CHECKCRT_MAILGUN_TO").split(","),
 			"subject": subject,
 			"text": text,
 			"html": html,
 		})
 
-brands = os.getenv("SITES")
+brands = os.getenv("CHECKCRT_SITES")
 if brands is None:
-  print("No sites found")
-  raise
+  raise Exception("No sites found")
 
 brands = brands.split(",")
 
